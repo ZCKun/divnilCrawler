@@ -7,7 +7,7 @@ import os
 class Divnil:
 
 	def __init__(self):
-		#self.url = "https://divnil.com/wallpaper/iphone8/%E3%82%A2%E3%83%8B%E3%83%A1%E3%81%AE%E5%A3%81%E7%B4%99.html"
+		
 		self.head = "https://divnil.com/wallpaper/iphone8/"
 		self.headers = {
 			"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0",
