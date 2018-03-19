@@ -31,7 +31,7 @@ class Divnil:
 			self.links.append(wallpaper['href'])
 			
 		pages = soup.find("ul", class_="pages")
-		self.nextPage = pages.find("li", class_="btn_next")
+		self.nextPage = pages.find("li", class_="btn_next") # 获取下一页按钮的dom
 		
 
 	
@@ -73,10 +73,12 @@ class Divnil:
 				with open("./Divnil/" + img_name + ".jpg", "wb") as f:
 					f.write(resp.content)
 					
+			# 如果 nextPage 为空，也就是没有下一页了
 			if self.nextPage == None:
 				break
 				
 			page = self.nextPage.find("a")
+			# 这里再次判断是因为我也不知道最后一页是什么样，加上保险
 			if page == None:
 				break
 			
