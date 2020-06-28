@@ -69,11 +69,12 @@ class Divnil:
         url = "https://divnil.com/wallpaper/iphone8/%E3%82%A2%E3%83%8B%E3%83%A1%E3%81%AE%E5%A3%81%E7%B4%99.html"
         self.get_image_info_url(url)
 
-        with Pool() as pool:
-            while True:
+        while True:
+            with Pool() as pool:
                 for url in self.links:
                     pool.apply_async(self.download_image, args=(url, ))
-
+                pool.close()
+                pool.join()
                 # 如果 nextPage 为空，也就是没有下一页了
                 if self.nextPage == None:
                     break
@@ -85,8 +86,6 @@ class Divnil:
 
                 self.get_image_info_url(self.head + page['href'])
 
-            pool.close()
-            pool.join()
 
 
 if __name__ == "__main__":
